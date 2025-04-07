@@ -1,7 +1,8 @@
-package sim_station;
+package sim_station.command;
 
-import mvc.Command;
+import tools.Command;
 import mvc.Model;
+import sim_station.Simulation;
 
 public class StopCommand extends Command {
     public StopCommand(Model model) {

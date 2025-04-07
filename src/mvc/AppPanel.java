@@ -1,5 +1,9 @@
 package mvc;
 
+import tools.Command;
+import tools.CommandProcessor;
+import tools.Utilities;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.beans.*;

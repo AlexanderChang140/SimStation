@@ -1,6 +1,9 @@
 package plague;
 
 import sim_station.*;
+import sim_station.agent.Heading;
+import sim_station.agent.MobileAgent;
+import tools.Utilities;
 
 public class Plague extends MobileAgent {
 
@@ -14,17 +17,17 @@ public class Plague extends MobileAgent {
     public Plague(Simulation sim) {
         super(sim);
 
-        int luck = mvc.Utilities.rng.nextInt(100);
+        int luck = Utilities.rng.nextInt(100);
         resistant = luck < PlagueSimulation.RESISTANCE;
         heading = Heading.randomHeading();
-        speed = mvc.Utilities.rng.nextInt(5);
+        speed = Utilities.rng.nextInt(5);
         infected();
     }
 
 
     private void infected() {
         if(!resistant) {
-            int luck = mvc.Utilities.rng.nextInt(100);
+            int luck = Utilities.rng.nextInt(100);
             this.infected = (luck < PlagueSimulation.VIRULENCE);
         }
     }

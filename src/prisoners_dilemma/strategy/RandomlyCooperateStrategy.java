@@ -1,4 +1,7 @@
-package prisoners_dilemma;
+package prisoners_dilemma.strategy;
+
+import prisoners_dilemma.Prisoner;
+import tools.Utilities;
 
 public class RandomlyCooperateStrategy extends Strategy{
     public RandomlyCooperateStrategy(Prisoner owner){
@@ -7,6 +10,6 @@ public class RandomlyCooperateStrategy extends Strategy{
 
     @Override
     public boolean doICooperate(){
-        return mvc.Utilities.rng.nextBoolean();
+        return Utilities.rng.nextBoolean();
     }
 }

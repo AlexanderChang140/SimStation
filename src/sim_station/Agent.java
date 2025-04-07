@@ -1,7 +1,8 @@
 package sim_station;
 
 import java.io.Serializable;
-import mvc.Utilities;
+import tools.Utilities;
+import sim_station.agent.AgentState;
 
 public abstract class Agent implements Runnable, Serializable {
     private static final long serialVersionUID = 1L;

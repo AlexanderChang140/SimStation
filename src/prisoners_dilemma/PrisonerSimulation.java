@@ -1,5 +1,9 @@
 package prisoners_dilemma;
 
+import prisoners_dilemma.strategy.AlwaysCheatStrategy;
+import prisoners_dilemma.strategy.AlwaysCooperateStrategy;
+import prisoners_dilemma.strategy.CopyLastStrategy;
+import prisoners_dilemma.strategy.RandomlyCooperateStrategy;
 import sim_station.Simulation;
 import sim_station.Agent;
 import java.util.ArrayList;

@@ -1,4 +1,7 @@
-package prisoners_dilemma;
+package prisoners_dilemma.strategy;
+
+import prisoners_dilemma.Prisoner;
+import prisoners_dilemma.strategy.Strategy;
 
 public class AlwaysCooperateStrategy extends Strategy {
     public AlwaysCooperateStrategy(Prisoner owner) {

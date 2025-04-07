@@ -1,6 +1,9 @@
-package prisoners_dilemma;
+package prisoners_dilemma.strategy;
 
-public class CopyLastStrategy extends Strategy{
+import prisoners_dilemma.Prisoner;
+import prisoners_dilemma.strategy.Strategy;
+
+public class CopyLastStrategy extends Strategy {
     public CopyLastStrategy(Prisoner owner){
         super(owner);
     }

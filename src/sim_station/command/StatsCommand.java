@@ -1,8 +1,9 @@
-package sim_station;
+package sim_station.command;
 
-import mvc.Command;
+import tools.Command;
 import mvc.Model;
-import mvc.Utilities;
+import tools.Utilities;
+import sim_station.Simulation;
 
 public class StatsCommand extends Command {
     public StatsCommand(Model model) {

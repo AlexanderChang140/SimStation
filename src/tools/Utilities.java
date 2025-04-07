@@ -1,4 +1,4 @@
-package mvc;
+package tools;
 
 import mvc.Model;
 
@@ -130,5 +130,4 @@ public class Utilities {
         // TODO Auto-generated method stub
         return null;
     }
-
 }

@@ -1,9 +1,9 @@
 package prisoners_dilemma;
 
-import sim_station.Agent;
-import sim_station.Heading;
-import mvc.Utilities;
-import sim_station.MobileAgent;
+import prisoners_dilemma.strategy.Strategy;
+import sim_station.agent.Heading;
+import tools.Utilities;
+import sim_station.agent.MobileAgent;
 
 public class Prisoner extends MobileAgent {
     private final static int BOTH_COOPERATES = 3;
@@ -20,7 +20,7 @@ public class Prisoner extends MobileAgent {
 
     public Prisoner(PrisonerSimulation ps) {
         super(ps);
-        lastOpponent = mvc.Utilities.rng.nextBoolean();
+        lastOpponent = Utilities.rng.nextBoolean();
     }
     public boolean getLastOpponent() {
         return lastOpponent;

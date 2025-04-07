@@ -1,6 +1,8 @@
 package sim_station;
 
 import mvc.*;
+import sim_station.command.*;
+import tools.Command;
 
 public class SimStationFactory implements SimFactory {
 
@@ -53,7 +55,7 @@ public class SimStationFactory implements SimFactory {
     @Override
     public String about()
     {
-        return "Cyberdellic Designs SimStation, 2025. All rights reserved.";
+        return "Group 1, 2025. All rights reserved.";
     }
 
 

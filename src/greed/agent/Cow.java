@@ -1,9 +1,8 @@
 package greed.agent;
 
 import greed.GreedSimulation;
-import sim_station.Agent;
-import sim_station.Heading;
-import sim_station.MobileAgent;
+import sim_station.agent.Heading;
+import sim_station.agent.MobileAgent;
 import sim_station.Simulation;
 import tools.Mth;
 

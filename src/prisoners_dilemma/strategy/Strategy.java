@@ -1,4 +1,6 @@
-package prisoners_dilemma;
+package prisoners_dilemma.strategy;
+
+import prisoners_dilemma.Prisoner;
 
 public abstract class Strategy {
     protected Prisoner owner;

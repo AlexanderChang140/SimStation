@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 import mvc.*;
+import sim_station.agent.AgentState;
+import tools.Utilities;
 
 public class Simulation extends Model {
     private static final long serialVersionUID = 1L;
