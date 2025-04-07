@@ -42,7 +42,8 @@ public abstract class AppPanel extends JPanel implements Subscriber, ActionListe
 
     @Override
     public void update() {
-
+        controlPanel.revalidate();
+        controlPanel.repaint();
     }
 
     protected JMenuBar createMenuBar() {
