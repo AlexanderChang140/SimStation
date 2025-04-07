@@ -1,27 +1,41 @@
 package mvc;
 
-import tools.Subscriber;
 import javax.swing.*;
-import java.awt.*;
+import java.beans.*;
 
-public abstract class View extends JPanel implements Subscriber {
+public class View extends JComponent implements PropertyChangeListener {
+
     protected Model model;
 
     public View(Model model) {
+        super();
         this.model = model;
+        model.addPropertyChangeListener(this);
+        // optional border around the view component
+        //setBorder(LineBorder.createBlackLineBorder());
     }
 
-    public abstract void update();
+    public Model getModel() {
+        return model;
+    }
+
+    // called by File/Open and File/New
+    public void setModel(Model newModel) {
+        if (this.model != null) this.model.removePropertyChangeListener(this);
+        this.model = newModel;
+        if (newModel != null) {
+            this.model.addPropertyChangeListener(this);
+            repaint();
+        }
+    }
 
     @Override
-    public void paintComponent(Graphics gc) {
-        super.paintComponent(gc);
+    public void propertyChange(PropertyChangeEvent arg0) {
+        repaint();
     }
 
-    public void setModel(Model newModel) {
-        this.model.unsubscribe(this);
-        this.model = newModel;
-        this.model.subscribe(this);
-        update();
-    }
 }
+
+
+
+

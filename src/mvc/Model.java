@@ -1,30 +1,25 @@
 package mvc;
 
-import tools.Publisher;
-
-import java.io.Serial;
-import java.io.Serializable;
-
-public abstract class Model extends Publisher implements Serializable {
-    @Serial
+public abstract class Model extends Bean {
     private static final long serialVersionUID = 1L;
-    protected boolean hasUnsavedChanges = false;
 
-    private String fileName;
-
+    private String fileName = null;
+    private Boolean unsavedChanges = false;
     public String getFileName() {
         return fileName;
     }
-
     public void setFileName(String fileName) {
         this.fileName = fileName;
     }
-
-    public boolean hasUnsavedChanges() {
-        return hasUnsavedChanges;
+    public Boolean getUnsavedChanges() {
+        return unsavedChanges;
+    }
+    public void setUnsavedChanges(Boolean unsavedChanges) {
+        this.unsavedChanges = unsavedChanges;
     }
 
-    public void setUnsavedChanges(boolean hasUnsavedChanges) {
-        this.hasUnsavedChanges = hasUnsavedChanges;
+    public void changed() {
+        unsavedChanges = true;
+        firePropertyChange(null, null, null);
     }
 }

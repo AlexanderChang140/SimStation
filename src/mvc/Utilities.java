@@ -1,19 +1,19 @@
-package tools;
+package mvc;
 
 import mvc.Model;
 
-import javax.swing.*;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.io.*;
 import java.util.Random;
 
-public class Utilities {
+import javax.swing.*;
 
+public class Utilities {
     // asks user a yes/no question
     public static boolean confirm(String query) {
         int result = JOptionPane.showConfirmDialog(null,
-                query, "choose one", JOptionPane.YES_NO_OPTION);
-        return result == 0;
+                query, "Warning!", JOptionPane.YES_NO_OPTION);
+        return result == 1;
     }
 
     // asks user for info
@@ -23,16 +23,16 @@ public class Utilities {
 
     // tells user some info
     public static void inform(String info) {
-        JOptionPane.showMessageDialog(null, info);
+        JOptionPane.showMessageDialog(null,info);
     }
 
     // tells user a lot of info
     public static void inform(String[] items) {
-        StringBuilder helpString = new StringBuilder();
-        for (String item : items) {
-            helpString.append("\n").append(item);
+        String helpString = "";
+        for(int i = 0; i < items.length; i++) {
+            helpString = helpString + "\n" + items[i];
         }
-        inform(helpString.toString());
+        inform(helpString);
     }
 
     // tells user about an error
@@ -52,18 +52,10 @@ public class Utilities {
                 JOptionPane.ERROR_MESSAGE);
     }
 
-    public static String buildMultilineString(String... strings) {
-        StringBuilder builder = new StringBuilder();
-        for (String string : strings) {
-            builder.append(string).append("\n");
-        }
-        return builder.toString();
-    }
-
+    // asks user to save changes
     public static void saveChanges(Model model) {
-        if (model.hasUnsavedChanges() && Utilities.confirm("current model has unsaved changes, continue?")) {
+        if (model.getUnsavedChanges() && Utilities.confirm("Current model has unsaved changes, continue?"))
             Utilities.save(model, false);
-        }
     }
 
     // asks user for a file name
@@ -76,13 +68,13 @@ public class Utilities {
         }
         if (open) {
             int returnVal = chooser.showOpenDialog(null);
-            if (returnVal == JFileChooser.APPROVE_OPTION) {
-                result = chooser.getSelectedFile().getPath();
+            if(returnVal == JFileChooser.APPROVE_OPTION) {
+                result= chooser.getSelectedFile().getPath();
             }
         } else {
             int returnVal = chooser.showSaveDialog(null);
-            if (returnVal == JFileChooser.APPROVE_OPTION) {
-                result = chooser.getSelectedFile().getPath();
+            if(returnVal == JFileChooser.APPROVE_OPTION) {
+                result= chooser.getSelectedFile().getPath();
             }
         }
         return result;
@@ -113,7 +105,7 @@ public class Utilities {
         Model newModel = null;
         try {
             ObjectInputStream is = new ObjectInputStream(new FileInputStream(fName));
-            newModel = (Model) is.readObject();
+            newModel = (Model)is.readObject();
             is.close();
         } catch (Exception err) {
             Utilities.error(err);
@@ -124,25 +116,19 @@ public class Utilities {
     // simple menu maker
     public static JMenu makeMenu(String name, String[] items, ActionListener handler) {
         JMenu result = new JMenu(name);
-        for (String s : items) {
-            JMenuItem item = new JMenuItem(s);
+        for(int i = 0; i < items.length; i++) {
+            JMenuItem item = new JMenuItem(items[i]);
             item.addActionListener(handler);
             result.add(item);
         }
         return result;
     }
 
-    // random number generator
     public static Random rng = new Random(System.currentTimeMillis());
 
-    public static void log(String msg) {
-        System.out.println(msg); // for now
-    }
-
-    private static int nextID = 100;
-
-    public static int getID() {
-        return nextID++;
+    public static String getID() {
+        // TODO Auto-generated method stub
+        return null;
     }
 
 }
