@@ -2,7 +2,7 @@ package plague;
 
 import sim_station.*;
 
-public class Plague extends Agent {
+public class Plague extends MobileAgent {
 
     private static final double RADIUS = 20;
 

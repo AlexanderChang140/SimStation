@@ -3,8 +3,9 @@ package prisoners_dilemma;
 import sim_station.Agent;
 import sim_station.Heading;
 import mvc.Utilities;
+import sim_station.MobileAgent;
 
-public class Prisoner extends Agent {
+public class Prisoner extends MobileAgent {
     private final static int BOTH_COOPERATES = 3;
     private final static int BOTH_CHEATS = 1;
     private final static int I_COOPERATE_OTHER_CHEATS = 0;

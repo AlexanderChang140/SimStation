@@ -7,15 +7,14 @@ public abstract class Agent implements Runnable, Serializable {
     private static final long serialVersionUID = 1L;
     public static Integer AGENT_SIZE = 5; // size of each agent
     private String name;		//name of the agent
-    protected Heading heading;	//Agent heading
+
     private AgentState state;	//state
     private Thread thread;
-    private int xc; 	//x coordinate
-    private int yc;		//y coordinate
+    protected int xc; 	//x coordinate
+    protected int yc;		//y coordinate
     protected Simulation world;
 
-    public Agent(Simulation sim) {
-        heading = Heading.randomHeading();	//make random
+    public Agent(Simulation sim) {	//make random
         state = null;
         xc = Utilities.rng.nextInt(Simulation.WORLD_SIZE + 1);
         yc = Utilities.rng.nextInt(Simulation.WORLD_SIZE + 1);
@@ -65,23 +64,7 @@ public abstract class Agent implements Runnable, Serializable {
 
     public abstract void update();
 
-    public void move(int steps) {
-        if(heading == Heading.NORTH) {
-            yc = yc - steps;
-        }
-        else if(heading == Heading.SOUTH) {
-            yc = yc + steps;
-        }
-        else if(heading == Heading.EAST) {
-            xc = xc + steps;
-        }
-        else {	//West
-            xc = xc - steps;
-        }
-        outOfBoundsAdapter();
-    }
-
-    private void outOfBoundsAdapter() {
+    protected void outOfBoundsAdapter() {
         if(yc > Simulation.WORLD_SIZE + SimStationView.BOX_Y_CORNER ) {	//If agent hits south border
             yc = yc - Simulation.WORLD_SIZE;
         }
