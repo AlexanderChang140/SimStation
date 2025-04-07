@@ -1,7 +1,7 @@
 package plague;
 
 import mvc.Model;
-import sim_station.Agent;
+import sim_station.agent.Agent;
 import sim_station.SimStationView;
 import sim_station.Simulation;
 

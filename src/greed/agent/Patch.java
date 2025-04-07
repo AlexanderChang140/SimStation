@@ -1,6 +1,6 @@
 package greed.agent;
 
-import sim_station.Agent;
+import sim_station.agent.Agent;
 import sim_station.Simulation;
 import tools.Mth;
 

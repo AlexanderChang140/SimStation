@@ -1,13 +1,14 @@
-package sim_station;
+package sim_station.agent;
 
 import java.io.Serializable;
+
+import sim_station.SimStationView;
+import sim_station.Simulation;
 import tools.Utilities;
-import sim_station.agent.AgentState;
 
 public abstract class Agent implements Runnable, Serializable {
     private static final long serialVersionUID = 1L;
     public static Integer AGENT_SIZE = 5; // size of each agent
-    private String name;		//name of the agent
 
     private AgentState state;	//state
     private Thread thread;

@@ -5,7 +5,7 @@ import prisoners_dilemma.strategy.AlwaysCooperateStrategy;
 import prisoners_dilemma.strategy.CopyLastStrategy;
 import prisoners_dilemma.strategy.RandomlyCooperateStrategy;
 import sim_station.Simulation;
-import sim_station.Agent;
+import sim_station.agent.Agent;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

@@ -3,7 +3,7 @@ package greed;
 import greed.agent.Cow;
 import greed.agent.Patch;
 import mvc.Model;
-import sim_station.Agent;
+import sim_station.agent.Agent;
 import sim_station.SimStationView;
 import tools.Mth;
 

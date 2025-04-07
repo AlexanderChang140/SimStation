@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 import mvc.*;
+import sim_station.agent.Agent;
 import sim_station.agent.AgentState;
 import tools.Utilities;
 

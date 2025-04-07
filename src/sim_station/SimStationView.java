@@ -1,6 +1,7 @@
 package sim_station;
 
 import mvc.*;
+import sim_station.agent.Agent;
 
 
 import java.awt.*;

@@ -1,6 +1,5 @@
 package sim_station.agent;
 
-import sim_station.Agent;
 import sim_station.Simulation;
 
 public abstract class MobileAgent extends Agent {
