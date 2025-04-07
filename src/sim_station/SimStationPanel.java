@@ -5,8 +5,6 @@ import javax.swing.*;
 import java.awt.*;
 
 public class SimStationPanel extends AppPanel {
-
-
     public SimStationPanel(AppFactory factory) {
         super(factory);
         this.setLayout(new GridLayout(1, 2));
