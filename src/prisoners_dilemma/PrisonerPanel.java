@@ -4,8 +4,6 @@ import sim_station.SimFactory;
 import sim_station.SimStationPanel;
 
 public class PrisonerPanel extends SimStationPanel {
-    private static final long serialVersionUID = 1L;
-
     public PrisonerPanel(SimFactory factory) {
         super(factory);
     }
