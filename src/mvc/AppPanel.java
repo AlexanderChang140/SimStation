@@ -14,8 +14,9 @@ public class AppPanel extends JPanel implements PropertyChangeListener, ActionLi
     private static final long serialVersionUID = 1L;
     protected Model model;
     protected AppFactory factory;
-    protected Set<View> views;
+    private final View view;
     private final JFrame frame;
+    protected final JPanel panel;
     public static int FRAME_WIDTH = 600;
     public static int FRAME_HEIGHT = 350;
 
@@ -23,8 +24,16 @@ public class AppPanel extends JPanel implements PropertyChangeListener, ActionLi
         super();
         this.factory = factory;
         model = factory.makeModel();
-        views = new HashSet<>();
+        view = factory.getView(model);
         if (model != null) model.addPropertyChangeListener(this);
+
+        this.setLayout(new GridLayout(1, 2));
+
+        panel = new JPanel();
+        this.add(panel, "West");
+
+        View view = factory.getView(model);
+        this.add(view, "East");
 
         frame = new JFrame();
         Container cp = frame.getContentPane();
@@ -35,21 +44,11 @@ public class AppPanel extends JPanel implements PropertyChangeListener, ActionLi
         frame.setSize(FRAME_WIDTH, FRAME_HEIGHT);
     }
 
-    public void addView(View view) {
-        views.add(view);
-    }
-
-    @Override
-    public Component add(Component c) {
-        if (c instanceof View) addView((View) c);
-        return super.add(c);
-    }
-
     public void display() {
         frame.setVisible(true);
     }
 
-    //
+
     public void propertyChange(PropertyChangeEvent evt) {
         /* override in extensions if needed */
     }
@@ -64,7 +63,7 @@ public class AppPanel extends JPanel implements PropertyChangeListener, ActionLi
         this.model = newModel;
         this.model.initSupport();
         this.model.addPropertyChangeListener(this);
-        for (View view : views) view.setModel(this.model);
+        view.setModel(this.model);
         //alternatively: this.model.copy(model);
     }
 

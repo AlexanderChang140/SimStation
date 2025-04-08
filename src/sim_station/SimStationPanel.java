@@ -7,10 +7,9 @@ import java.awt.*;
 public class SimStationPanel extends AppPanel {
     public SimStationPanel(AppFactory factory) {
         super(factory);
-        this.setLayout(new GridLayout(1, 2));
 
         JPanel buttons = new JPanel();
-        buttons.setLayout(new GridLayout(5, 1));
+        buttons.setLayout(new GridLayout(1, 5));
 
         Panel p = new Panel();
         JButton b = new JButton("Start");
@@ -44,14 +43,9 @@ public class SimStationPanel extends AppPanel {
         p.add(b);
         buttons.add(p);
 
-        JPanel westPanel = new JPanel();
-        westPanel.setLayout(new BorderLayout());
-        westPanel.add(buttons, "North");
-        this.add(westPanel, "West");
+        buttons.setPreferredSize(new Dimension(280, 100));
 
-        View view = factory.getView(model);
-        addView(view);
-        this.add(view, "East");
+        panel.add(buttons, "North");
     }
 
     public static void main(String[] args) {
