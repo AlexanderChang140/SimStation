@@ -7,7 +7,6 @@ import tools.Mth;
 
 public class GreedSimulation extends Simulation {
     private Patch[][] patches;
-
     private int growthRate = 1;
     private int greediness = 10;
     private int waitPenalty = 5;
@@ -19,8 +18,6 @@ public class GreedSimulation extends Simulation {
     public GreedSimulation(String name) {
         super(name);
     }
-
-
 
     @Override
     public void populate() {
@@ -39,12 +36,24 @@ public class GreedSimulation extends Simulation {
         }
     }
 
+    public void setGrowthRate(int growthRate) {
+        this.growthRate = growthRate;
+    }
+
+    public void setGreediness(int greediness) {
+        this.greediness = greediness;
+    }
+
     public int getWaitPenalty() {
         return waitPenalty;
     }
 
     public int getMoveEnergy() {
         return moveEnergy;
+    }
+
+    public void setMoveEnergy(int moveEnergy) {
+        this.moveEnergy = moveEnergy;
     }
 
     public Patch getPatch(int xc, int yc) {
