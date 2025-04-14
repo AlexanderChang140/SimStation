@@ -24,6 +24,10 @@ public class Cow extends MobileAgent {
         GreedSimulation greedSimulation = (GreedSimulation) world;
         Patch patch = greedSimulation.getPatch(xc, yc);
 
+        if (patch == null) {
+            return;
+        }
+
         if (energy + greediness > 100 || patch.consume(this, greediness)) {
             setEnergy(energy - greedSimulation.getWaitPenalty());
         }
