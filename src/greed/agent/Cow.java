@@ -49,5 +49,8 @@ public class Cow extends MobileAgent {
 
     public void setEnergy(int energy) {
         this.energy = Mth.clamp(energy, 0, 100);
+        if (this.energy == 0) {
+            stop();
+        }
     }
 }
