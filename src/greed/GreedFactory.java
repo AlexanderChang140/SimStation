@@ -14,4 +14,9 @@ public class GreedFactory extends SimStationFactory {
     public View getView(Model model) {
         return new GreedView(model);
     }
+
+    @Override
+    public String getTitle() {
+        return "Greed";
+    }
 }
