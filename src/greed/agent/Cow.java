@@ -6,6 +6,8 @@ import sim_station.agent.MobileAgent;
 import sim_station.Simulation;
 import tools.Mth;
 
+import javax.swing.*;
+
 public class Cow extends MobileAgent {
     private final int greediness;
     private int energy = 100;
@@ -27,16 +29,20 @@ public class Cow extends MobileAgent {
         if (patch == null) {
             return;
         }
+        patch.consume(this, greediness);
+        world.changed();
+    }
 
-        if (energy + greediness > 100 || patch.consume(this, greediness)) {
-            setEnergy(energy - greedSimulation.getWaitPenalty());
-        }
-        else {
+    public boolean doMove() {
+        GreedSimulation greedSimulation = (GreedSimulation) world;
+
+        if (energy >= greedSimulation.getMoveEnergy()) {
             setEnergy(energy - greedSimulation.getMoveEnergy());
             heading = Heading.randomHeading();
             move(greedSimulation.getPatchSize() + 5);
+            return true;
         }
-        world.changed();
+        return false;
     }
 
     public int getGreediness() {
@@ -51,6 +57,7 @@ public class Cow extends MobileAgent {
         this.energy = Mth.clamp(energy, 0, 100);
         if (this.energy == 0) {
             stop();
+            System.out.println("stop");
         }
     }
 }
