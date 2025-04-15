@@ -30,14 +30,18 @@ public class SimStationView extends View {
             drawAgent(g2, a);
         }
 
-        g2.setColor(Color.BLACK);
-        g2.setStroke(new BasicStroke(2));
-        g2.draw(new Rectangle2D.Double(BOX_X_CORNER, BOX_Y_CORNER, Simulation.WORLD_SIZE + Agent.AGENT_SIZE, Simulation.WORLD_SIZE + Agent.AGENT_SIZE));
+        drawBorder(g2);
         g2.setColor(oldColor);
     }
 
     protected void drawAgent(Graphics2D graphics2D, Agent agent) {
         graphics2D.setColor(Color.RED);
         graphics2D.fillRect(agent.getX(), agent.getY(), Agent.AGENT_SIZE, Agent.AGENT_SIZE);
+    }
+
+    protected void drawBorder(Graphics2D graphics2D) {
+        graphics2D.setColor(Color.BLACK);
+        graphics2D.setStroke(new BasicStroke(2));
+        graphics2D.draw(new Rectangle2D.Double(BOX_X_CORNER, BOX_Y_CORNER, Simulation.WORLD_SIZE + Agent.AGENT_SIZE, Simulation.WORLD_SIZE + Agent.AGENT_SIZE));
     }
 }

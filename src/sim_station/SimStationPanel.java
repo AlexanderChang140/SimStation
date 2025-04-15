@@ -52,6 +52,13 @@ public class SimStationPanel extends AppPanel {
         AppPanel panel = new SimStationPanel(new SimStationFactory());
         panel.display();
     }
+
+    @Override
+    public void setModel(Model newModel) {
+        super.setModel(newModel);
+        Simulation simulation = (Simulation) newModel;
+        simulation.resetThreads();
+    }
 }
 
 

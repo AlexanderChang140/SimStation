@@ -11,7 +11,7 @@ public abstract class Agent implements Runnable, Serializable {
     public static Integer AGENT_SIZE = 5; // size of each agent
 
     private AgentState state;	//state
-    private Thread thread;
+    private transient Thread thread;
     protected int xc; 	//x coordinate
     protected int yc;		//y coordinate
     protected Simulation world;
@@ -20,10 +20,10 @@ public abstract class Agent implements Runnable, Serializable {
         state = null;
         xc = Utilities.rng.nextInt(Simulation.WORLD_SIZE + 1);
         yc = Utilities.rng.nextInt(Simulation.WORLD_SIZE + 1);
-        thread = new Thread();
         world = sim;
     }
 
+    @Override
     public void run() {
         thread = Thread.currentThread();
         while(state != AgentState.STOPPED) {
@@ -47,14 +47,16 @@ public abstract class Agent implements Runnable, Serializable {
         thread = new Thread(this);
         state = AgentState.READY;
         thread.start();
+        onStart();
     }
 
     public synchronized void pause() {
         state = AgentState.PAUSED;
+        onInterrupted();
     }
 
     public synchronized void resume() {
-        if(state != AgentState.STOPPED) {
+        if (state != AgentState.STOPPED) {
             state = AgentState.READY;
             notify();
         }
@@ -62,6 +64,19 @@ public abstract class Agent implements Runnable, Serializable {
 
     public synchronized void stop() {
         state = AgentState.STOPPED;
+        onExit();
+    }
+
+    protected void onStart() {
+
+    }
+
+    protected void onInterrupted() {
+
+    }
+
+    protected void onExit() {
+
     }
 
     public abstract void update();
@@ -85,6 +100,10 @@ public abstract class Agent implements Runnable, Serializable {
         if(thread != null) {
             thread.join();
         }
+    }
+
+    public void resetThread() {
+        start();
     }
     public AgentState getState() {
         return state;

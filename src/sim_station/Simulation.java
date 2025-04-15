@@ -129,6 +129,11 @@ public class Simulation extends Model {
         agents.clear();
     }
 
+    public void resetThreads() {
+        agents.forEach(Agent::resetThread);
+        observer.resetThread();
+    }
+
     public ArrayList<Agent> getAgents() {
         return agents;
     }
