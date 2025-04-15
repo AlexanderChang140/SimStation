@@ -112,7 +112,12 @@ public class Utilities {
             ObjectInputStream is = new ObjectInputStream(new FileInputStream(fName));
             newModel = (Model)is.readObject();
             is.close();
-        } catch (Exception err) {
+        }
+        catch (NullPointerException np) {
+            Utilities.error("No file selected");
+        }
+
+        catch (Exception err) {
             Utilities.error(err);
         }
         return newModel;
