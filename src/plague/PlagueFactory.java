@@ -13,7 +13,13 @@ public class PlagueFactory extends SimStationFactory {
         return new PlagueSimulation("Plague Simulation");
     }
 
+    @Override
     public View getView (Model model) {
         return new PlagueView(model);
+    }
+
+    @Override
+    public String getTitle() {
+        return "Plague";
     }
 }

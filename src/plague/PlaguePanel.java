@@ -7,9 +7,8 @@ public class PlaguePanel extends SimStationPanel{
         super(factory);
     }
 
-    public static void main (String[] args) {
-        SimFactory factory = new PlagueFactory();
-        SimStationPanel panel = new SimStationPanel(factory);
+    public static void main(String[] args) {
+        PlaguePanel panel = new PlaguePanel(new PlagueFactory());
         panel.display();
     }
 }
