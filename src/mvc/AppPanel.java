@@ -32,7 +32,6 @@ public class AppPanel extends JPanel implements PropertyChangeListener, ActionLi
         panel = new JPanel();
         this.add(panel, "West");
 
-        View view = factory.getView(model);
         this.add(view, "East");
 
         frame = new JFrame();
@@ -71,7 +70,7 @@ public class AppPanel extends JPanel implements PropertyChangeListener, ActionLi
         JMenuBar result = new JMenuBar();
         // add file, edit, and help menus
         JMenu fileMenu =
-                Utilities.makeMenu("File", new String[]{"New", "Save", "SaveAs", "Open", "Quit"}, this);
+                Utilities.makeMenu("File", new String[]{"New", "Save", "Save As", "Open", "Quit"}, this);
         result.add(fileMenu);
 
         JMenu editMenu =
