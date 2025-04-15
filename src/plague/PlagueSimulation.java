@@ -3,17 +3,25 @@ package plague;
 import sim_station.Simulation;
 
 public class PlagueSimulation extends Simulation {
-    public static int VIRULENCE = 50; //Percent of infection
     public static int RESISTANCE = 2; //Percent of resisting infection
-    public static int POP_SIZE = 50;
+    private int infectionChance = 50; //Percent of infection
+    private int initialInfected = 5;
+    private int initialPopulation = 50;
+    private int outcomeTime;
 
     public PlagueSimulation(String name) {
         super(name);
     }
 
     public void populate() {
-        for (int i = 0; i < POP_SIZE; i++) {
-            agents.add(new Plague(this));
+        int infectedLeft = initialInfected;
+        for (int i = 0; i < initialPopulation; i++) {
+            Plague plague = new Plague(this, infectionChance, outcomeTime);
+            agents.add(plague);
+            if (infectedLeft > 0) {
+                infectedLeft--;
+                plague.setInfected(true);
+            }
         }
     }
 
@@ -26,7 +34,23 @@ public class PlagueSimulation extends Simulation {
         String[] stats = new String[3];
         stats[0] = "# agents = " + agents.size();
         stats[1] = "Clock = " + clock;
-        stats[2] = "% infected: " + Math.round(count / POP_SIZE * 100) + "%";
+        stats[2] = "% infected: " + Math.round(count / initialPopulation * 100) + "%";
         return stats;
+    }
+
+    public void setInfectionChance(int infectionChance) {
+        this.infectionChance = infectionChance;
+    }
+
+    public void setInitialInfected(int initialInfected) {
+        this.initialInfected = initialInfected;
+    }
+
+    public void setInitialPopulation(int initialPopulation) {
+        this.initialPopulation = initialPopulation;
+    }
+
+    public void setOutcomeTime(int outcomeTime) {
+        this.outcomeTime = outcomeTime;
     }
 }

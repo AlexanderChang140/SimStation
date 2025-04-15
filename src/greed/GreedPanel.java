@@ -1,6 +1,6 @@
 package greed;
 
-import greed.command.ChangeGreed;
+import greed.command.ChangeGreedCommand;
 import greed.command.ChangeGrowthCommand;
 import greed.command.ChangeMoveEnergyCommand;
 import sim_station.SimFactory;
@@ -24,7 +24,7 @@ public class GreedPanel extends SimStationPanel {
         greedSlider.setMajorTickSpacing(10);
         greedSlider.setPaintTicks(true);
         greedSlider.setPaintLabels(true);
-        greedSlider.addChangeListener(e -> CommandProcessor.execute(new ChangeGreed(model, greedSlider.getValue())));
+        greedSlider.addChangeListener(e -> CommandProcessor.execute(new ChangeGreedCommand(model, greedSlider.getValue())));
         greed.add(greedSlider);
         components.add(greed);
 
