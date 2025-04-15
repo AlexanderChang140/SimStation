@@ -3,11 +3,13 @@ package greed;
 import greed.agent.Cow;
 import greed.agent.Patch;
 import mvc.Model;
+import sim_station.Simulation;
 import sim_station.agent.Agent;
 import sim_station.SimStationView;
 import tools.Mth;
 
 import java.awt.*;
+import java.awt.geom.Rectangle2D;
 
 public class GreedView extends SimStationView {
     public GreedView(Model model) {
@@ -29,6 +31,14 @@ public class GreedView extends SimStationView {
         else {
             super.drawAgent(graphics2D, agent);
         }
+    }
+
+    @Override
+    protected void drawBorder(Graphics2D graphics2D) {
+        graphics2D.setColor(Color.BLACK);
+        graphics2D.setStroke(new BasicStroke(2));
+        graphics2D.draw(new Rectangle2D.Double(BOX_X_CORNER + 1, BOX_Y_CORNER + 1, Simulation.WORLD_SIZE + Agent.AGENT_SIZE + 5, Simulation.WORLD_SIZE + Agent.AGENT_SIZE + 5));
+
     }
 
     public Color getShadedGreen(int value) {
