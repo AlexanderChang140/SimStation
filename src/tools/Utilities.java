@@ -92,7 +92,12 @@ public class Utilities {
             model.setUnsavedChanges(false);
             os.writeObject(model);
             os.close();
-        } catch (Exception err) {
+
+        }
+        catch (NullPointerException np) {
+            Utilities.error("Save canceled");
+        }
+        catch (Exception err) {
             model.setUnsavedChanges(true);
             Utilities.error(err);
         }
