@@ -1,14 +1,12 @@
 package sim_station;
 
-import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
-
-import mvc.*;
+import mvc.Model;
 import sim_station.agent.Agent;
 import sim_station.agent.AgentState;
 import sim_station.agent.ObserverAgent;
 import tools.Utilities;
+
+import java.util.ArrayList;
 
 public class Simulation extends Model {
     private static final long serialVersionUID = 1L;
